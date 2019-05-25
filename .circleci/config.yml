@@ -17,7 +17,7 @@ jobs: # a collection of steps
       - run:
           name: Deploy Master to Heroku
           command: |
-            git push https://heroku:$4847220a-f816-45a8-934f-770488ce0388@git.heroku.com/$floating-spire-93695.git master
+            git push https://heroku:$HEROKU-API@git.heroku.com/floating-spire-93695.git master
 workflows:
   version: 2
   build-deploy:
