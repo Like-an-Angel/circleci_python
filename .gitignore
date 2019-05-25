@@ -1,0 +1,4 @@
+.unmock
+venv
+*.txt
+*.log
