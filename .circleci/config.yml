@@ -1,7 +1,7 @@
 version: 2 # use CircleCI 2.0
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
-    working_directory: ~/mediate/ # directory where steps will run
+    working_directory: ~/circleci_python/ # directory where steps will run
     docker: # run the steps with Docker
       - image: circleci/python:3.6.4 # ...with this image as the primary container
     steps: # a collection of executable commands
@@ -17,7 +17,7 @@ jobs: # a collection of steps
       - run:
           name: Deploy Master to Heroku
           command: |
-            git push https://heroku:$HEROKU-API@git.heroku.com/floating-spire-93695.git master
+            git push https://heroku:$HEROKU-API@git.heroku.com/$HEROKU_APP_NAME.git master
 workflows:
   version: 2
   build-deploy:

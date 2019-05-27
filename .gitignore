@@ -1,4 +1,5 @@
+__pycache__
 .unmock
-venv
+venv_unmock
 *.txt
 *.log
