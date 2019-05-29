@@ -7,6 +7,20 @@ import unmock
 def fetchSpotifyArtist():
     opts = unmock.init(ignore=["headers", "story"])
     # opts.save = True # For saving mocked response to local
+    response = requests.get("https://api.spotify.com/v1/artists")  # will be mocked
+    unmock.reset()
+    return response
+
+def fetchSpotifyTracks():
+    opts = unmock.init(ignore=["headers", "story"])
+    # opts.save = True # For saving mocked response to local
+    response = requests.get("https://api.spotify.com/v1/tracks")  # will be mocked
+    unmock.reset()
+    return response
+
+def fetchSpotifyPlaylists():
+    opts = unmock.init(ignore=["headers", "story"])
+    # opts.save = True # For saving mocked response to local
     response = requests.get("https://api.spotify.com/v1/browse/featured-playlists")  # will be mocked
     unmock.reset()
     return response
@@ -17,24 +31,21 @@ api = Api(app)
 class Artists(Resource):
     def get(self):
         response = fetchSpotifyArtist()
-        print(response.json())
         return response.json()
 
 class Tracks(Resource):
     def get(self):
-        pass
-        response = fetchSpotifyArtist()
+        response = fetchSpotifyTracks()
         return response.json()
 
-class Artist_Name(Resource):
-    def get(self, artist_id):
-        pass
-        response = fetchSpotifyArtist()
+class Playlists(Resource):
+    def get(self):
+        response = fetchSpotifyPlaylists()
         return response.json()
 
 api.add_resource(Artists, '/artists')
 api.add_resource(Tracks, '/tracks')
-api.add_resource(Artist_Name, '/artists/<artist_id>')
+api.add_resource(Playlists, '/playlists')
 
 if __name__=="__main__":
     app.run(port="5000")
