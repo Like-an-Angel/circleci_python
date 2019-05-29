@@ -9,7 +9,7 @@ def fetchSpotifyArtist():
     # opts.save = True # For saving mocked response to local
     response = requests.get("https://api.spotify.com/v1/browse/featured-playlists")  # will be mocked
     unmock.reset()
-    return response.json()
+    return response
 
 app = Flask(__name__)
 api = Api(app)
@@ -17,21 +17,20 @@ api = Api(app)
 class Artists(Resource):
     def get(self):
         response = fetchSpotifyArtist()
-        print(type(response))
-        print(response)
-        return jsonify(response)
+        print(response.json())
+        return response.json()
 
 class Tracks(Resource):
     def get(self):
         pass
         response = fetchSpotifyArtist()
-        return jsonify(response)
+        return response.json()
 
 class Artist_Name(Resource):
     def get(self, artist_id):
         pass
         response = fetchSpotifyArtist()
-        return jsonify(response)
+        return response.json()
 
 api.add_resource(Artists, '/artists')
 api.add_resource(Tracks, '/tracks')
