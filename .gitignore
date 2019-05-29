@@ -1,5 +1,5 @@
 __pycache__
 .unmock
+local
 venv_unmock
-*.txt
 *.log
