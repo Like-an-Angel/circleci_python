@@ -23,7 +23,7 @@ class TestPlaylistsApi(unittest.TestCase):
 class TestTracksApi(unittest.TestCase):
     def test_fetchSpotifyTracks(self):
 
-        self.response = fetchSpotifyTracks4()
+        self.response = fetchSpotifyTracks()
         assert isinstance(self.response.json(), dict)
         assert isinstance(self.response.json(), dict)
         self.assertEqual(self.response.status_code, 200)
